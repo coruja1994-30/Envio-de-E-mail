@@ -1,0 +1,146 @@
+DOCUMENTAÇÃO TÉCNICA - SISTEMA DE ENVIO DE EMAIL
+
+1. ESTRUTURA DO PROJETO
+----------------------
+- email.py: Arquivo principal com a lógica de envio de emails
+- config.py: Arquivo de configuração com constantes e parâmetros
+- logger.py: Módulo de logging para registro de operações
+- requirements.txt: Dependências do projeto
+
+2. DEPENDÊNCIAS
+---------------
+- pandas>=1.5.0: Para manipulação de dados
+- pywin32>=305: Para integração com Windows/Outlook
+- python-dotenv>=0.19.0: Para gerenciamento de variáveis de ambiente
+
+3. CONFIGURAÇÕES (config.py)
+---------------------------
+3.1 Email
+- EMAIL_CC: Lista de emails para cópia
+- ASSUNTO_EMAIL: Assunto padrão dos emails
+
+3.2 Arquivos
+- BASE_DIR: Diretório base do projeto
+- EXCEL_FILE: Caminho do arquivo Excel
+- WORKSHEET_NAME: Nome da planilha no Excel
+
+3.3 Logging
+- LOG_FILE: Caminho do arquivo de log
+- LOG_LEVEL: Nível de logging (INFO, DEBUG, ERROR)
+
+3.4 Validação
+- REQUIRED_COLUMNS: Colunas obrigatórias no Excel
+
+4. CLASSE EMAILSENDER (email.py)
+-------------------------------
+4.1 Atributos
+- excel: Instância do Excel
+- wb: Workbook do Excel
+- ws: Worksheet do Excel
+- outlook: Instância do Outlook
+
+4.2 Métodos Principais
+- __init__: Inicialização da classe
+- __enter__/__exit__: Gerenciamento de contexto
+- close_resources: Fechamento seguro de recursos
+- validate_excel_file: Validação do arquivo Excel
+- open_excel: Abertura do arquivo Excel
+- validate_data: Validação dos dados
+- build_email_body: Construção do corpo do email
+- send_email: Envio de email individual
+- send_grouped_email: Envio de emails agrupados
+
+5. SISTEMA DE LOGGING (logger.py)
+--------------------------------
+5.1 Configuração
+- Formato: data - nome - nível - mensagem
+- Saídas: Arquivo e console
+- Níveis: INFO, WARNING, ERROR
+
+5.2 Funcionalidades
+- Criação automática de diretório de logs
+- Registro de operações e erros
+- Logs simultâneos em arquivo e console
+
+6. FLUXO DE EXECUÇÃO
+-------------------
+1. Validação do arquivo Excel
+2. Abertura do Excel e planilha
+3. Leitura e validação dos dados
+4. Agrupamento dos dados
+5. Construção e envio dos emails
+6. Fechamento dos recursos
+
+7. TRATAMENTO DE ERROS
+---------------------
+7.1 Validações
+- Existência do arquivo Excel
+- Permissões de acesso
+- Colunas obrigatórias
+- Dados nulos
+
+7.2 Exceções
+- FileNotFoundError: Arquivo não encontrado
+- PermissionError: Sem permissão de acesso
+- ValueError: Dados inválidos
+- Exception: Erros gerais
+
+8. SEGURANÇA
+------------
+8.1 Boas Práticas
+- Fechamento automático de recursos
+- Validação de dados
+- Logging de operações
+- Tratamento de erros
+
+8.2 Considerações
+- Dados sensíveis em arquivo de configuração
+- Permissões de acesso ao Excel/Outlook
+- Validação de emails
+
+9. MANUTENÇÃO
+------------
+9.1 Arquivos
+- Logs rotativos
+- Backup de configurações
+- Documentação atualizada
+
+9.2 Atualizações
+- Verificação de dependências
+- Testes após modificações
+- Versionamento do código
+
+10. LIMITAÇÕES
+-------------
+- Requer Microsoft Outlook instalado
+- Depende de permissões do Windows
+- Necessita de conexão com servidor de email
+- Limitações de tamanho de anexos
+
+11. RECOMENDAÇÕES
+----------------
+11.1 Implementação
+- Testar em ambiente controlado
+- Validar configurações
+- Verificar permissões
+- Monitorar logs
+
+11.2 Manutenção
+- Atualizar dependências
+- Revisar configurações
+- Monitorar erros
+- Fazer backup regular
+
+12. VERSÕES FUTURAS
+------------------
+12.1 Melhorias Planejadas
+- Suporte a outros clientes de email
+- Interface gráfica
+- Relatórios de envio
+- Agendamento de tarefas
+
+12.2 Novas Funcionalidades
+- Templates de email
+- Anexos automáticos
+- Validação de emails
+- Estatísticas de envio 
