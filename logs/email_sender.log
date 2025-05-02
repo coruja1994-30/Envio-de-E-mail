@@ -1,0 +1,2 @@
+2025-05-01 20:59:26,566 - logger - ERROR - Erro durante o processo de envio de emails: Arquivo Excel não encontrado: c:\Users\Usuário\Desktop\DEV\envio de email via python\dados\teste.xlsm
+2025-05-01 20:59:26,567 - logger - ERROR - Erro fatal: Arquivo Excel não encontrado: c:\Users\Usuário\Desktop\DEV\envio de email via python\dados\teste.xlsm
